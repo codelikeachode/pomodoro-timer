@@ -5,22 +5,30 @@ const Controls = ({ onStart, onStop, onResume, onReset, isActive, isPaused }) =>
     <div className="controls">
       {!isActive && !isPaused && (
         <button onClick={onStart} aria-label="Start timer">
-          Start
+          <span>
+            Start
+          </span>
         </button>
       )}
       {isActive && !isPaused && (
         <button onClick={onStop} aria-label="Stop timer">
-          Stop
+          <span>
+            Stop
+          </span>
         </button>
       )}
       {isPaused && (
         <button onClick={onResume} aria-label="Resume timer">
-          Resume
+          <span>
+            Resume
+          </span>
         </button>
       )}
       {(isActive || isPaused) && (
         <button onClick={onReset} aria-label="Reset timer and settings">
-          Reset
+          <span>
+            Reset
+          </span>
         </button>
       )}
     </div>

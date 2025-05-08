@@ -119,8 +119,8 @@ h1 {
   box-shadow: none;
 }
 
-.controls button.stop-btn { /* Example: if you add a class to the stop button */
-  border-color: #FF6B6B; /* A contrasting color for stop/reset if desired */
+.controls button.stop-btn {
+  border-color: #FF6B6B;
   color: #FF6B6B;
 }
 .controls button.stop-btn:hover,
@@ -181,7 +181,7 @@ h1 {
 
 .settings-group input[type="number"]:focus {
   border-color: #00CFE8;
-  box-shadow: 0 0 0 2px rgba(0, 207, 232, 0.3); /* Focus glow */
+  box-shadow: 0 0 0 2px rgba(0, 207, 232, 0.3);
 }
 
 .settings-group input[type="number"]:disabled {
@@ -195,22 +195,22 @@ h1 {
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 1rem;
-  background-color: #00CFE8; /* Accent color */
-  color: #1A1D24; /* Dark text */
+  background-color: #00CFE8;
+  color: #1A1D24;
   border: none;
   padding: 12px 30px;
-  border-radius: 50px; /* Pill-shaped */
+  border-radius: 50px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  outline: none; /* Remove default outline */
-  width: auto; /* Auto width or set a specific one if needed */
-  display: block; /* Make it block to center if needed, or use flex on parent */
-  margin: 0 auto; /* Center the button */
+  outline: none;
+  width: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .settings button[type="submit"]:hover,
 .settings button[type="submit"]:focus-visible {
-  background-color: #00A8C0; /* Slightly darker cyan on hover */
+  background-color: #00A8C0;
   box-shadow: 0 0 15px rgba(0, 207, 232, 0.6);
 }
 
@@ -231,7 +231,7 @@ h1 {
 @media (max-width: 600px) {
   .app-container {
     padding: 20px 25px;
-    margin: 1rem; /* Add some margin on very small screens */
+    margin: 1rem;
   }
 
   h1 {
@@ -247,18 +247,18 @@ h1 {
   }
 
   .controls {
-    flex-direction: column; /* Stack control buttons vertically */
+    flex-direction: column;
     gap: 12px;
   }
   .controls button {
-    width: 100%; /* Make buttons full width when stacked */
-    padding: 14px 20px; /* Adjust padding for stacked buttons */
+    width: 100%;
+    padding: 14px 20px;
   }
 
   .settings-group input[type="number"] {
     padding: 10px 12px;
   }
   .settings button[type="submit"] {
-    width: 100%; /* Make settings button full width */
+    width: 100%;
   }
 }
