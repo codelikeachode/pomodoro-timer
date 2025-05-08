@@ -35,13 +35,12 @@ function App() {
   const alarmSoundRef = useRef(null);
 
   useEffect(() => {
-    // Initialize alarm sound ref
     alarmSoundRef.current = document.getElementById('alarm-sound');
   }, []);
 
   const playAlarm = useCallback(() => {
     if (alarmSoundRef.current) {
-      alarmSoundRef.current.currentTime = 0; // Rewind to start
+      alarmSoundRef.current.currentTime = 0;
       alarmSoundRef.current.play().catch(error => console.warn("Audio play failed:", error));
     }
   }, []);
@@ -83,7 +82,6 @@ function App() {
             setSeconds(59);
             return prevMinutes - 1;
           }
-          // Timer ended
           playAlarm();
           if (currentSessionType === SESSION_TYPES.WORK) {
             const newCompletedSessions = completedSessions + 1;
@@ -93,12 +91,12 @@ function App() {
             } else {
               resetTimer(SESSION_TYPES.SHORT_BREAK);
             }
-          } else { // Break ended
+          } else {
             resetTimer(SESSION_TYPES.WORK);
           }
-          return 0; // Reset minutes as well, handled by resetTimer
+          return 0;
         });
-        return 59; // Should be set by setMinutes's callback or resetTimer
+        return 59;
       });
     }, 1000);
 
@@ -111,7 +109,7 @@ function App() {
   }, [minutes, seconds, currentSessionType]);
 
   const handleStart = () => {
-    if (minutes === 0 && seconds === 0) { // If timer ended, reset to current session's start
+    if (minutes === 0 && seconds === 0) {
         resetTimer(currentSessionType);
     }
     setIsActive(true);
@@ -124,7 +122,7 @@ function App() {
 
   const handleResume = () => {
     setIsPaused(false);
-    setIsActive(true); // Ensure it's active
+    setIsActive(true);
   };
 
   const handleResetApp = () => {
@@ -132,8 +130,7 @@ function App() {
     setIsActive(false);
     setIsPaused(false);
     setCompletedSessions(0);
-    resetTimer(SESSION_TYPES.WORK); // Reset to initial work session
-    // Optionally, you could also reset config to DEFAULT_CONFIG here if desired
+    resetTimer(SESSION_TYPES.WORK);
     // setConfig(DEFAULT_CONFIG);
     // localStorage.setItem('pomodoroConfig', JSON.stringify(DEFAULT_CONFIG));
   };
@@ -141,7 +138,6 @@ function App() {
   const handleSaveSettings = (newConfig) => {
     setConfig(newConfig);
     localStorage.setItem('pomodoroConfig', JSON.stringify(newConfig));
-    // If not active, update timer to new work duration
     if (!isActive && !isPaused && currentSessionType === SESSION_TYPES.WORK) {
       setMinutes(newConfig.workDuration);
       setSeconds(0);
@@ -154,7 +150,7 @@ function App() {
     }
   };
 
-  useEffect(() => { // Effect to reset timer values when config changes AND timer is not active
+  useEffect(() => {
     if (!isActive && !isPaused) {
         if (currentSessionType === SESSION_TYPES.WORK) {
             setMinutes(config.workDuration);

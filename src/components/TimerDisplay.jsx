@@ -14,7 +14,7 @@ const TimerDisplay = ({ minutes, seconds, sessionType }) => {
   }
 
   return (
-    <div className="timer-display-wrapper"> {/* Optional wrapper */}
+    <div className="timer-display-wrapper">
       <div className={`session-type ${sessionClass}`} aria-live="polite">
         {sessionType}
       </div>
